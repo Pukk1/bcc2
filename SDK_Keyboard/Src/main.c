@@ -241,6 +241,8 @@ void KB_Test( void ) {
 			HAL_Delay(1000);
 		}
 	}
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+		HAL_Delay(500);
 		Buzzer_Play(zelda_melody, zelda_delays, sizeof(zelda_melody) / sizeof(uint32_t));
 			  HAL_Delay(1000);
 			  Buzzer_Play(megalovania_melody, megalovania_delays, sizeof(megalovania_melody) / sizeof(uint32_t));
