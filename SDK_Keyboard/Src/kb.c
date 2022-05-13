@@ -28,7 +28,7 @@ exit:
 }
 
 uint8_t Check_Row( uint8_t  Nrow ) {
-	uint8_t Nkey = 0x00;
+	uint8_t Nkey = 0;
 	HAL_StatusTypeDef ret = HAL_OK;
 	uint8_t buf;
 	uint8_t kbd_in;
@@ -52,56 +52,56 @@ uint8_t Check_Row( uint8_t  Nrow ) {
 	kbd_in = buf & 0x70;
 	Nkey = kbd_in;
 	if( kbd_in != 0x70) {
-		if( !(kbd_in & 0x10) ) {
+		if( !(kbd_in & 0x40) ) {
 			switch (Nrow) {
 				case ROW1:
-					Nkey = 0x04;
+					Nkey = 9;
 					break;
 				case ROW2:
-					Nkey = 0x04;
+					Nkey = 6;
 					break;
 				case ROW3:
-					Nkey = 0x04;
+					Nkey = 3;
 					break;
 				case ROW4:
-					Nkey = 0x04;
+					Nkey = 10;
 					break;
 			}
 		}
 		if( !(kbd_in & 0x20) ) {
 			switch (Nrow) {
 				case ROW1:
-					Nkey = 0x02;
+					Nkey = 8;
 					break;
 				case ROW2:
-					Nkey = 0x02;
+					Nkey = 5;
 					break;
 				case ROW3:
-					Nkey = 0x02;
+					Nkey = 2;
 					break;
 				case ROW4:
-					Nkey = 0x02;
+					Nkey = 11;
 					break;
 			}
 		}
-		if( !(kbd_in & 0x40) ) {
+		if( !(kbd_in & 0x10) ) {
 			switch (Nrow) {
 				case ROW1:
-					Nkey = 0x01;
+					Nkey = 7;
 					break;
 				case ROW2:
-					Nkey = 0x01;
+					Nkey = 4;
 					break;
 				case ROW3:
-					Nkey = 0x01;
+					Nkey = 1;
 					break;
 				case ROW4:
-					Nkey = 0x01;
+					Nkey = 12;
 					break;
 			}
 		}
 	}
-	else Nkey = 0x00;
+	else Nkey = 0;
 
 	return Nkey;
 }
